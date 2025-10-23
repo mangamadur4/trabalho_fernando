@@ -1,0 +1,18 @@
+name: Verificar Tamanho de Arquivos
+on: [push]
+
+jobs:
+  check-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Procurar arquivos maiores que 100KB
+        run: |
+          big=$(find . -type f -size +100k -print)
+          if [ -n "$big" ]; then
+            echo "::warning::Arquivos maiores que 100KB encontrados:"
+            echo "$big"
+          else
+            echo "Todos os arquivos estão abaixo de 100KB."
+          fi
