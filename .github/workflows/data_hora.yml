@@ -1,0 +1,10 @@
+name: Data e Hora
+on: [push]
+
+
+jobs:
+  datetime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar data e hora
+        run: date
