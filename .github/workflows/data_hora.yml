@@ -1,10 +1,12 @@
-name: Data e Hora
+name: Data e Hora (Horário do Brasil)
 on: [push]
-
 
 jobs:
   datetime:
     runs-on: ubuntu-latest
     steps:
-      - name: Mostrar data e hora
-        run: date
+      - name: Mostrar data e hora no horário do Brasil
+        run: |
+          export TZ=America/Sao_Paulo
+          echo "Data e hora atuais (horário de Brasília):"
+          date
