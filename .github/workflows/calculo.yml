@@ -1,0 +1,12 @@
+name: Calcular 2+2
+on: [push]
+
+
+jobs:
+  calc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calcular 2 + 2
+        run: |
+          result=$((2+2))
+          echo "2 + 2 = $result"
