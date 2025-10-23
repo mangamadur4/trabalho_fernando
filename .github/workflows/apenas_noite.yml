@@ -1,0 +1,18 @@
+name: Rodar apenas à noite
+on:
+  schedule:
+    - cron: '0 * * * *' # todo início de hora (teste)
+
+
+jobs:
+  night:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar horário noturno
+        run: |
+          hour=$(date -u +"%H")
+          if [ "$hour" -ge 0 ] && [ "$hour" -le 5 ]; then
+            echo "Está de noite (UTC). Rodando..."
+          else
+            echo "Fora do horário noturno. Encerrando." && exit 0
+          fi
