@@ -1,0 +1,10 @@
+name: Usuário do Push
+on: [push]
+
+
+jobs:
+  user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar usuário do push
+        run: echo "Usuário do push: ${{ github.actor }}"
