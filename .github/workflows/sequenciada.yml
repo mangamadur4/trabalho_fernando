@@ -1,0 +1,15 @@
+name: Contagem em sequência
+on: [push]
+
+
+jobs:
+  seq:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Listar arquivos HTML/CSS/JS em sequência
+        run: |
+          for ext in html css js; do
+            echo "--- .$ext ---"
+            for f in *.$ext; do [ -e "$f" ] && echo "$f"; done
+          done
