@@ -1,0 +1,15 @@
+name: Contagem total
+on: [push]
+
+
+jobs:
+  allcount:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Contar total de arquivos HTML/CSS/JS
+        run: |
+          html=$(ls -1 *.html 2>/dev/null | wc -l)
+          css=$(ls -1 *.css 2>/dev/null | wc -l)
+          js=$(ls -1 *.js 2>/dev/null | wc -l)
+          echo "Resumo: html=$html css=$css js=$js"
