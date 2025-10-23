@@ -1,17 +1,20 @@
-name: Contar à meia-noite
+name: Agendamento meia noite
+
 on:
   schedule:
-    - cron: '0 0 * * *'
-
+    - cron: "0 0 * * *"  # roda à meia-noite (UTC)
+  workflow_dispatch:
 
 jobs:
-  midnight:
+  agendar:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Contar arquivos à meia-noite
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Contagem de arquivos diária
         run: |
-          html=$(ls -1 *.html 2>/dev/null | wc -l)
-          css=$(ls -1 *.css 2>/dev/null | wc -l)
-          js=$(ls -1 *.js 2>/dev/null | wc -l)
-          echo "Em $(date -u): html=$html css=$css js=$js"
+          echo "Execução automática à meia-noite!"
+          echo "HTML: $(find . -name '*.html' | wc -l)"
+          echo "CSS: $(find . -name '*.css' | wc -l)"
+          echo "JS: $(find . -name '*.js' | wc -l)"
