@@ -2,7 +2,7 @@ name: Agendamento meia noite
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # roda à meia-noite (UTC)
+    - cron: "0 3 * * *"  # 3h UTC = 00h em Brasília
   workflow_dispatch:
 
 jobs:
